@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Crownies</title>
+<meta name="description" content="Crownies is a daily logic puzzle for iPhone. One answer, no guessing, no timers, no lives. Made by Crowbot Labs LLC.">
+<style>
+  /* One column on the game's own colors. No fonts, scripts or trackers load from anywhere else, so the privacy policy stays true. */
+  :root {
+    --bg: #FFB59E;
+    --surface: #FFF8EE;
+    --lip: #E2876B;
+    --ink: #3B2A24;
+    --ink-soft: #5E3F33;
+    --strong: #3B2A24;
+    --strong-ink: #FFF8EE;
+    --link: #1E3699;
+    --round: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --text: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #2B201C;
+      --surface: #3B2A24;
+      --lip: #160F0D;
+      --ink: #FFF1E6;
+      --ink-soft: #E2C7B8;
+      --strong: #FFB59E;
+      --strong-ink: #3B2A24;
+      --link: #9DB8FF;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #2B201C;
+    --surface: #3B2A24;
+    --lip: #160F0D;
+    --ink: #FFF1E6;
+    --ink-soft: #E2C7B8;
+    --strong: #FFB59E;
+    --strong-ink: #3B2A24;
+    --link: #9DB8FF;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.55 var(--text);
+  }
+  main {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding-block: 2.5rem 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid;
+    gap: 1.5rem;
+  }
+  .hero { display: grid; justify-items: center; text-align: center; gap: 0.5rem; }
+  .hero img { width: 132px; height: 132px; }
+  h1 { font: 800 clamp(2.75rem, 12vw, 3.75rem)/1 var(--round); margin: 0; letter-spacing: -0.01em; }
+  .lede { font: 600 1.3rem/1.3 var(--round); margin: 0.25rem 0 0; text-wrap: balance; }
+  .soon {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 999px;
+    background: var(--strong);
+    color: var(--strong-ink);
+    font: 700 1rem/1.2 var(--round);
+  }
+  .card {
+    background: var(--surface);
+    border-radius: 20px;
+    box-shadow: 0 4px 0 var(--lip);
+    padding: 1.25rem;
+    min-width: 0;
+  }
+  h2 { font: 800 1.35rem/1.2 var(--round); margin: 0 0 0.6rem; text-wrap: balance; }
+  h3 { font: 700 1.02rem/1.3 var(--round); margin: 1.1rem 0 0.2rem; }
+  p { margin: 0 0 0.75rem; }
+  p:last-child { margin-bottom: 0; }
+  ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+  a { color: var(--link); overflow-wrap: anywhere; }
+  a:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; border-radius: 4px; }
+  .shots {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .shots img {
+    flex: 0 0 auto;
+    width: min(62vw, 13rem);
+    height: auto;
+    aspect-ratio: 1320 / 2868;
+    border-radius: 16px;
+    scroll-snap-align: start;
+  }
+  footer { text-align: center; color: var(--ink-soft); font-size: 0.92rem; }
+  footer p { margin: 0.2rem 0; }
+</style>
+</head>
+<body>
+<main>
+
+<header class="hero">
+  <img src="queen.png" width="132" height="132" alt="A Crownie: a round smiling face wearing a gold crown">
+  <h1>Crownies</h1>
+  <p class="lede">A new logic puzzle every day. One answer, no guessing, no timers, no lives.</p>
+  <span class="soon">Coming soon to the App Store</span>
+</header>
+
+<section class="card" aria-labelledby="how">
+  <h2 id="how">How it plays</h2>
+  <p>Place your Crownies on the board:</p>
+  <ul>
+    <li>one in every row,</li>
+    <li>one in every column,</li>
+    <li>one in every colored region,</li>
+    <li>and no two touching, not even at the corners.</li>
+  </ul>
+</section>
+
+<section aria-label="Screens from the game">
+  <div class="shots" tabindex="0" role="group" aria-label="Five screens, scroll sideways">
+    <img src="shots/1-daily.png" loading="lazy" width="1320" height="2868" alt="The Daily: a new puzzle every day, the same one for everyone">
+    <img src="shots/2-solved.png" loading="lazy" width="1320" height="2868" alt="A solved board: one answer, no guessing">
+    <img src="shots/3-ladder.png" loading="lazy" width="1320" height="2868" alt="The technique ladder: short lessons teach each move">
+    <img src="shots/4-wall.png" loading="lazy" width="1320" height="2868" alt="The calendar wall: solve every Daily in a month to win its trophy">
+    <img src="shots/5-calm.png" loading="lazy" width="1320" height="2868" alt="No timers and no lives: take your time, with a hint whenever you're stuck">
+  </div>
+</section>
+
+<section class="card" aria-labelledby="whats-in">
+  <h2 id="whats-in">What's in the game</h2>
+  <ul>
+    <li><strong>The Daily.</strong> The same puzzle for everyone, free, with no ads and unlimited hints. Solve it to grow your streak.</li>
+    <li><strong>Practice.</strong> More than 11,000 puzzles from Easy to Expert. Free, with a banner under the board and a full-screen ad now and then after a finished puzzle. No ad covers the board.</li>
+    <li><strong>Lessons.</strong> Short lessons teach each technique, and a hint names the next logical step.</li>
+    <li><strong>The calendar wall.</strong> Every Daily you solve fills its day. Solve a whole month to win its trophy.</li>
+    <li><strong>Remove Ads.</strong> A one-time purchase that turns off the banner and the full-screen ads.</li>
+    <li><strong>Crownies Plus.</strong> A monthly or yearly subscription: no ads at all, every past Daily, unlimited hints and a harder second puzzle every day.</li>
+  </ul>
+</section>
+
+<section class="card" aria-labelledby="support">
+  <h2 id="support">Support</h2>
+  <p>Write to <a href="mailto:support@crowbotlabs.com">support@crowbotlabs.com</a>. Tell us your iPhone model and what happened.</p>
+  <h3>I bought something and it's gone</h3>
+  <p>Open Settings in the game and tap Restore Purchases.</p>
+  <h3>How do I cancel Plus?</h3>
+  <p>Apple runs the subscription. Cancel in your App Store account settings, at least 24 hours before the period ends to stop the next charge.</p>
+  <h3>Will a new iPhone keep my streak?</h3>
+  <p>Yes, if you're signed in to iCloud. The game keeps a copy of your streak in your own iCloud account.</p>
+  <h3>How do I turn off reminders?</h3>
+  <p>In the game's Settings, under Reminders, or in your iPhone's Settings under Notifications.</p>
+</section>
+
+<footer>
+  <p><a href="privacy/">Privacy Policy</a> · <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a></p>
+  <p>Crownies is made by Crowbot Labs LLC. © 2026</p>
+</footer>
+
+</main>
+</body>
+</html>
